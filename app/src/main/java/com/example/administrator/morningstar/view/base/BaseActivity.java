@@ -21,6 +21,7 @@ import com.example.administrator.morningstar.view.tool.ViewTools;
 
 public abstract class BaseActivity extends AppCompatActivity {
 
+
     private LinearLayout mView;
     private BaseActivity mContext;
     private int mToolBarLayoutId;
