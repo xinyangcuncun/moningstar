@@ -30,6 +30,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     private TextView mTitleView;
     private TextView haha;
     private TextView haha_test;
+    private TextView haha_master;
 
 
     private int toolbarId;
