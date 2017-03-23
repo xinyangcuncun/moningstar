@@ -28,6 +28,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     private View mToolBarView;
     private DrawerLayout mDrawerLayout;
     private TextView mTitleView;
+    private TextView haha;
 
 
     private int toolbarId;
