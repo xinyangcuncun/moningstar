@@ -23,7 +23,7 @@ public abstract class BaseActivity extends AppCompatActivity {
 
 
     private LinearLayout mView;
-    private BaseActivity mContext;
+    public BaseActivity mContext;
     private int mToolBarLayoutId;
     private View mToolBarView;
     private DrawerLayout mDrawerLayout;
@@ -49,7 +49,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        ViewTools.setActivityBackGroudCoulor(this, Color.parseColor("#FF4081"));
+        ViewTools.setActivityBackGroudCoulor(this, Color.parseColor("#ffffff"));
         setContentView(R.layout.activity_base);
         mContext = this;
         mView = (LinearLayout) findViewById(R.id.root_view);

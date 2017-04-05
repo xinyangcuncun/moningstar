@@ -1,11 +1,51 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="BaseAppTheme">
+    </style>
+
+    <style name="BaseAppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="toolbarStyle">@style/ToolbarStyle</item>
+        <!--<item name="android:windowAnimationStyle">@android:style/Animation.Translucent</item>-->
+        <item name="android:listDivider">@drawable/shape_divider_line_efefef</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <!--防止当前Activity退出时在瞬间显示桌面壁纸，然后才显示上一个Activity-->
     </style>
 
+    <style name="divider_horizontal">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">0.4dp</item>
+        <item name="android:background">@color/app_gray_efefef</item>
+    </style>
+
+    <style name="indexRadioButton" parent="commRadioButton">
+        <item name="android:drawablePadding">4dp</item>
+        <item name="android:layout_marginTop">4dp</item>
+        <item name="android:textColor">@drawable/selector_main_textcolor</item>
+        <item name="android:textSize">11sp</item>
+    </style>
+
+    <style name="auto_horizontal">
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">0dp</item>
+    </style>
+    <!-- 通用的横向RadioButton -->
+    <style name="commRadioButton" parent="auto_horizontal">
+        <item name="android:button">@null</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="ToolbarStyle" parent="Widget.AppCompat.Toolbar">
+        <!-- 设置该属性解决空白部分-->
+        <item name="contentInsetStart">0dp</item>
+    </style>
+    <style name="AppThemeTranslucent" parent="AppTheme">
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+    </style>
 </resources>

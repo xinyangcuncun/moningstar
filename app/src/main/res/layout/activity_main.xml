@@ -1,18 +1,108 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_main"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.example.administrator.morningstar.view.activity.MainActivity">
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"/>
-</RelativeLayout>
+    <include layout="@layout/app_toolbar" />
+    <View
+        android:id="@+id/v_main_header_divider"
+        style="@style/divider_horizontal"/>
+
+    <FrameLayout
+        android:id="@+id/fl_main_content"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <View style="@style/divider_horizontal" />
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:orientation="horizontal"
+            android:background="@color/white">
+            <View
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:visibility="invisible"/>
+            <View
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:visibility="invisible"/>
+            <View
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:visibility="invisible"/>
+            <View
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:visibility="invisible"/>
+            <View
+                android:id="@+id/v_badge_view"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+
+                android:layout_weight="1" />
+        </LinearLayout>
+        <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/rg_main_nav_group"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:background="@android:color/transparent"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/rb_main_nav_home"
+                style="@style/indexRadioButton"
+                android:drawableTop="@drawable/selector_main_home"
+                android:text="动画" />
+
+            <RadioButton
+                android:id="@+id/rb_main_nav_car_source"
+                style="@style/indexRadioButton"
+                android:drawableTop="@drawable/selector_main_car_source"
+                android:text="自定义控件" />
+
+            <FrameLayout
+                android:id="@+id/fl_main_nav_publish_car"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+
+                <ImageView
+                    android:layout_width="80dp"
+                    android:layout_height="48dp"
+                    android:layout_gravity="center_horizontal"
+                    android:scaleType="fitCenter"
+                    android:src="@mipmap/main_tab_publish" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|center_horizontal"
+                    android:text="网络"
+                    android:textColor="@color/white"
+                    android:textSize="11sp" />
+            </FrameLayout>
+
+            <RadioButton
+                android:id="@+id/rb_main_customer_service.xml"
+                style="@style/indexRadioButton"
+                android:drawableTop="@drawable/selector_main_customer_service"
+                android:text="新技术" />
+            <RadioButton
+                android:id="@+id/rb_main_nav_mine"
+                style="@style/indexRadioButton"
+                android:drawableTop="@drawable/selector_main_mine"
+                android:text="数据库" />
+        </RadioGroup>
+    </FrameLayout>
+</LinearLayout>
