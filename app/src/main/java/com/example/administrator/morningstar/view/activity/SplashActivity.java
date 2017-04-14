@@ -26,7 +26,6 @@ public class SplashActivity extends BaseActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_splash);
         ApplicationIo.getInstance(mContext).initMode1();
         handler.postDelayed(new Runnable() {
             @Override
@@ -36,6 +35,16 @@ public class SplashActivity extends BaseActivity {
                 SplashActivity.this.finish();
             }
         }, 2000);
+    }
+
+    @Override
+    protected int getViewLayout() {
+        return R.layout.activity_splash;
+    }
+
+    @Override
+    protected CharSequence getToolBarTitle() {
+        return null;
     }
 
     @Override

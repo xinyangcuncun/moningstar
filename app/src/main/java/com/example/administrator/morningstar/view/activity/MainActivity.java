@@ -38,9 +38,18 @@ public class MainActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
         initView();
         initData(savedInstanceState);
+    }
+
+    @Override
+    protected int getViewLayout() {
+        return R.layout.activity_main;
+    }
+
+    @Override
+    protected CharSequence getToolBarTitle() {
+        return null;
     }
 
     void dealWithIntent() {

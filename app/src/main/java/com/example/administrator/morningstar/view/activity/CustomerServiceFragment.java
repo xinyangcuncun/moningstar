@@ -13,7 +13,7 @@ import com.example.administrator.morningstar.R;
  * Created by anson on 2017/4/5.
  */
 
-public class CustomerServiceFragment  extends BaseFragment{
+public class CustomerServiceFragment  extends BaseFragment implements View.OnClickListener {
     private TextView mTextView;
 
     @Override
@@ -32,6 +32,16 @@ public class CustomerServiceFragment  extends BaseFragment{
 
     private void initView() {
         mTextView = (TextView) getRootView().findViewById(R.id.tv_test_name);
-        mTextView.setText("新技术");
+        mTextView.setText("RxJava");
+        mTextView.setOnClickListener(this);
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.tv_test_name:
+                RxJavaActivity.startMe(mContext);
+                break;
+        }
     }
 }
