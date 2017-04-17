@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.airbnb.lottie.LottieAnimationView;
 import com.example.administrator.morningstar.R;
 
 /**
@@ -15,11 +16,10 @@ import com.example.administrator.morningstar.R;
 
 public class HomeFragment extends BaseFragment{
 
-    private TextView mTextView;
 
     @Override
     protected int getViewLayout() {
-        return R.layout.fragment_main_home;
+        return R.layout.fragment_main_home_anim;
     }
 
     public static HomeFragment newInstance() {
@@ -34,7 +34,9 @@ public class HomeFragment extends BaseFragment{
     }
 
     private void initView() {
-        mTextView = (TextView) getRootView().findViewById(R.id.tv_test_name);
-        mTextView.setText("动画");
+        LottieAnimationView animationView = (LottieAnimationView) getRootView().findViewById(R.id.animation_view);
+        animationView.setAnimation("Spider Loader.json");
+        animationView.loop(true);
+        animationView.playAnimation();
     }
 }

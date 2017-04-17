@@ -126,6 +126,8 @@ public class MainActivity extends BaseActivity {
             }
         });
 
+        /*replaceFragment(0);*/
+
     }
 
     private void replaceFragment(int index) {

@@ -1,5 +1,7 @@
 package com.example.administrator.morningstar.view.activity;
 
+import android.animation.Animator;
+import android.animation.ObjectAnimator;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,6 +15,9 @@ import android.widget.TextView;
 
 import com.example.administrator.morningstar.R;
 import com.example.administrator.morningstar.view.base.BaseActivity;
+import com.example.administrator.morningstar.view.tool.DefaultAnimations;
+import com.example.administrator.morningstar.view.tool.DefaultSort;
+import com.example.administrator.morningstar.view.tool.Spruce;
 
 /**
  * Created by anson on 2017/4/13.
@@ -22,6 +27,7 @@ public class RxJavaActivity extends BaseActivity{
 
     private RecyclerView mRxJavaRlv;
     private String arr[] = {"Concat","Contains","Distinct","Delay","Buffer","Timer","from","just","Scan","Skip","Take"};
+    private Animator spruceAnimator;
 
     @Override
     protected boolean isShowToolbar() {
@@ -45,7 +51,17 @@ public class RxJavaActivity extends BaseActivity{
     }
 
     private void initData() {
-        LinearLayoutManager layout = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
+        LinearLayoutManager layout = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false){
+            @Override
+            public void onLayoutChildren(RecyclerView.Recycler recycler, RecyclerView.State state) {
+                super.onLayoutChildren(recycler, state);
+                spruceAnimator = new Spruce.SpruceBuilder(mRxJavaRlv)
+                        .sortWith(new DefaultSort(100))
+                        .animateWith(DefaultAnimations.shrinkAnimator(mRxJavaRlv, 800),
+                                ObjectAnimator.ofFloat(mRxJavaRlv, "translationX", -mRxJavaRlv.getWidth(), 0f).setDuration(800))
+                        .start();
+            }
+        };
         mRxJavaRlv.setLayoutManager(layout);
         mRxJavaRlv.setAdapter(new RecyclerView.Adapter(){
             @Override
