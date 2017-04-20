@@ -8,10 +8,16 @@
     <View
         android:id="@+id/v_main_header_divider"
         style="@style/divider_horizontal"/>
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/rx_java_rlv"
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/srl_rx_java"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+        <android.support.v7.widget.RecyclerView
+            android:visibility="invisible"
+            android:id="@+id/rx_java_rlv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        </android.support.v7.widget.RecyclerView>
+    </android.support.v4.widget.SwipeRefreshLayout>
 
-    </android.support.v7.widget.RecyclerView>
 </LinearLayout>

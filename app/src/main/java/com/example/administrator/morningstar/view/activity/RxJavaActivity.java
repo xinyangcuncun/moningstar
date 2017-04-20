@@ -5,6 +5,8 @@ import android.animation.ObjectAnimator;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.SystemClock;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -28,6 +30,7 @@ public class RxJavaActivity extends BaseActivity{
     private RecyclerView mRxJavaRlv;
     private String arr[] = {"Concat","Contains","Distinct","Delay","Buffer","Timer","from","just","Scan","Skip","Take"};
     private Animator spruceAnimator;
+    private SwipeRefreshLayout mSrl;
 
     @Override
     protected boolean isShowToolbar() {
@@ -104,6 +107,35 @@ public class RxJavaActivity extends BaseActivity{
 
     private void initView() {
         mRxJavaRlv = (RecyclerView) findViewById(R.id.rx_java_rlv);
+        mSrl = (SwipeRefreshLayout) findViewById(R.id.srl_rx_java);
+    }
+
+   /* @Override
+    public void onWindowFocusChanged(boolean hasFocus) {
+        super.onWindowFocusChanged(hasFocus);
+        mSrl.setRefreshing(true);
+        mRxJavaRlv.setVisibility(View.VISIBLE);
+    }*/
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        mRxJavaRlv.setVisibility(View.INVISIBLE);
+        mSrl.post(new Runnable() {
+
+            @Override
+            public void run() {
+                mSrl.setRefreshing(true);
+            }
+        });
+        mSrl.postDelayed(new Runnable() {
+
+            @Override
+            public void run() {
+                mSrl.setRefreshing(false);
+                mRxJavaRlv.setVisibility(View.VISIBLE);
+            }
+        },2000);
     }
 
     public static void startMe(Context context) {
