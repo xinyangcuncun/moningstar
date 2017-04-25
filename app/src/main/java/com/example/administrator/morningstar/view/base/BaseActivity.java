@@ -8,6 +8,7 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -22,81 +23,51 @@ import com.example.administrator.morningstar.view.tool.ViewTools;
 public abstract class BaseActivity extends AppCompatActivity {
 
 
+    public BaseActivity mContext;
+    private Toolbar mToolBarView;
     private LinearLayout mView;
-    private BaseActivity mContext;
-    private int mToolBarLayoutId;
-    private View mToolBarView;
-    private DrawerLayout mDrawerLayout;
-    private TextView mTitleView;
-    private TextView haha;
-    private TextView hehe;
-    private TextView fenzhi1;
-    private TextView fenzhi2;
-    private TextView fenzhi3;
+    private TextView mGoBack;
+    private TextView mTitle;
+    private FrameLayout mBaseView;
 
-
-    private int toolbarId;
-
-    public void setTitleId(int titleId) {
-        this.titleId = titleId;
-    }
-
-    private int titleId;
-
-    public void setMtitleName(String mtitleName) {
-        this.mtitleName = mtitleName;
-    }
-
-    private String mtitleName;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        ViewTools.setActivityBackGroudCoulor(this, Color.parseColor("#FF4081"));
-        setContentView(R.layout.activity_base);
+        ViewTools.setActivityBackGroudCoulor(this, Color.parseColor("#ffffff"));
+        super.setContentView(R.layout.activity_base);
         mContext = this;
         mView = (LinearLayout) findViewById(R.id.root_view);
-        setToolBar();
+        mToolBarView = (Toolbar) findViewById(R.id.tb_app_bar);
+        mGoBack = (TextView) findViewById(R.id.tv_toolbar_back);
+        mTitle = (TextView) findViewById(R.id.tv_toolbar_title);
+        mBaseView = (FrameLayout) findViewById(R.id.base_framelayout);
+        int viewLayoutId = getViewLayout();
+        if (viewLayoutId != 0) {
+            View.inflate(mContext, viewLayoutId, mBaseView);
+        }
+        setToolBarDetail();
 
     }
 
-    private void setToolBar() {
+    protected abstract int getViewLayout();
+
+    private void setToolBarDetail() {
         if (isShowToolbar()) {
-            Toolbar toolbar = new Toolbar(mContext);
-            setSupportActionBar(toolbar);
-            int toolBarLayoutId = getToolBarLayoutId();
-            mToolBarView = View.inflate(mContext, toolBarLayoutId, toolbar);
-            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-            mDrawerLayout = new DrawerLayout(this);
-            ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, mDrawerLayout, toolbar, R.string.open, R.string.close);
-            toggle.syncState();
-            mDrawerLayout.setDrawerListener(toggle);
-            initTitle(mToolBarView, getTitleViewId(),getTitleName());
-            mView.addView(toolbar);
+            mToolBarView.setVisibility(View.VISIBLE);
+            mGoBack.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    finish();
+                }
+            });
+            mTitle.setText(getToolBarTitle());
+        } else {
+            mToolBarView.setVisibility(View.GONE);
         }
     }
 
-    private void initTitle(View toolBarView, int titleViewId,String title) {
-        mTitleView = (TextView) toolBarView.findViewById(titleViewId);
-        mTitleView.setText(title);
-    }
-
-    public  int getToolBarLayoutId(){
-        return toolbarId;
-    }
-
-    public void setToolbarId(int toolbarId) {
-        this.toolbarId = toolbarId;
-    }
+    protected abstract CharSequence getToolBarTitle();
 
     protected abstract boolean isShowToolbar();
-
-    public String getTitleName(){
-        return mtitleName;
-    }
-    public  int getTitleViewId(){
-        return titleId;
-    }
-
-
 }
