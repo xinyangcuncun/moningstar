@@ -1,5 +1,6 @@
 package com.example.administrator.morningstar.view.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -33,6 +34,12 @@ public class CarSourceFragment extends BaseFragment{
 
     private void initView() {
         mTextView = (TextView) getRootView().findViewById(R.id.tv_test_name);
-        mTextView.setText("自定义控件");
+        mTextView.setText("终极列表");
+        mTextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(mContext,NbListView.class));
+            }
+        });
     }
 }

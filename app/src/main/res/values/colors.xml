@@ -6,4 +6,6 @@
     <color name="app_gray_efefef">#efefef</color>
     <color name="white">#ffffff</color>
     <color name="cardViewBg">#2db9cc</color>
+    <color name="touming">#00000000</color>
+    <color name="color_light_blue">#00DDB6</color>
 </resources>

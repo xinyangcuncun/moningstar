@@ -24,6 +24,17 @@
         <activity android:name=".view.activity.MainActivity" />
         <activity android:name=".view.activity.RxJavaActivity" />
         <activity android:name=".view.activity.RxJavaDetailActivity" />
+        <activity android:name=".view.activity.NbListView" />
+        <activity android:name=".view.activity.AnimationUseActivity" />
+        <activity android:name=".view.activity.DataBindingUseActivity" />
+        <activity android:name=".view.activity.EmptyViewUseActivity" />
+        <activity android:name=".view.activity.HeaderAndFooterUseActivity" />
+        <activity android:name=".view.activity.ItemDragAndSwipeUseActivity" />
+        <activity android:name=".view.activity.ItemClickActivity" />
+        <activity android:name=".view.activity.ExpandableUseActivity" />
+        <activity android:name=".view.activity.PullToRefreshUseActivity" />
+        <activity android:name=".view.activity.MultipleItemUseActivity" />
+        <activity android:name=".view.activity.SectionUseActivity" />
     </application>
 
 </manifest>
