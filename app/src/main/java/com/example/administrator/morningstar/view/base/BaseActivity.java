@@ -29,6 +29,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     private TextView mGoBack;
     private TextView mTitle;
     private FrameLayout mBaseView;
+    private FrameLayout mBaseViews;
 
 
     @Override
