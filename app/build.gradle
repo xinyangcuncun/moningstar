@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 25
-    buildToolsVersion "25.0.0"
+    buildToolsVersion '25.0.3'
     defaultConfig {
         applicationId "com.example.administrator.morningstar"
         minSdkVersion 17
@@ -12,6 +12,14 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         jackOptions {
             enabled true
+        }
+        manifestPlaceholders = [
+                GETUI_APP_ID : "0SX00lfWcI7ASR8CZEaGE9",
+                GETUI_APP_KEY : "MQW5BXR1jA7NvfWlehPFO2",
+                GETUI_APP_SECRET : "3yZlHNHZB66yUEPXiX4XO5"
+        ]
+        ndk {
+            abiFilters "armeabi", "armeabi-v7a", "x86_64"
         }
     }
     buildTypes {
@@ -41,5 +49,7 @@ dependencies {
     compile 'com.airbnb.android:lottie:2.0.0-beta4'
     compile 'com.github.florent37:viewanimator:1.0.5'
     compile 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.13'
+    compile 'com.getui:sdk:2.10.2.0'
+    compile 'com.android.support:support-v4:+'
 
 }

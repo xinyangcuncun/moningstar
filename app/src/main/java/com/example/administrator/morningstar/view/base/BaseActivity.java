@@ -13,7 +13,10 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.administrator.morningstar.R;
+import com.example.administrator.morningstar.view.activity.DemoIntentService;
+import com.example.administrator.morningstar.view.activity.DemoPushService;
 import com.example.administrator.morningstar.view.tool.ViewTools;
+import com.igexin.sdk.PushManager;
 
 
 /**
@@ -37,6 +40,8 @@ public abstract class BaseActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         ViewTools.setActivityBackGroudCoulor(this, Color.parseColor("#ffffff"));
         super.setContentView(R.layout.activity_base);
+        PushManager.getInstance().initialize(this.getApplicationContext(), DemoPushService.class);
+        PushManager.getInstance().registerPushIntentService(this.getApplicationContext(), DemoIntentService.class);
         mContext = this;
         mView = (LinearLayout) findViewById(R.id.root_view);
         mToolBarView = (Toolbar) findViewById(R.id.tb_app_bar);
