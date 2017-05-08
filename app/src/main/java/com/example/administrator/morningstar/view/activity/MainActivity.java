@@ -118,11 +118,11 @@ public class MainActivity extends BaseActivity {
                 }
             });
 
-        //发布车源入口监听
+        //网络监听入口
         flMainNavPublishCar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                RetrofitMvpActivity.startMe(mContext);
             }
         });
 

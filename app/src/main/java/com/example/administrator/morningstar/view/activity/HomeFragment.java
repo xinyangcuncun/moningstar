@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.airbnb.lottie.LottieAnimationView;
 import com.example.administrator.morningstar.R;
+import com.github.florent37.viewanimator.AnimationListener;
 import com.github.florent37.viewanimator.ViewAnimator;
 
 /**
@@ -52,7 +53,13 @@ public class HomeFragment extends BaseFragment {
         path.quadTo(RIGHT_CONTROL_POINT[0], RIGHT_CONTROL_POINT[1], BOTTOM_POINT[0], BOTTOM_POINT[1]);
         path.quadTo(LEFT_CONTROL_POINT[0], LEFT_CONTROL_POINT[1], START_POINT[0], START_POINT[1]);
         path.close();
-        ViewAnimator.animate(getRootView().findViewById(R.id.button)).path(path).repeatCount(Integer.MAX_VALUE).start();
+        ViewAnimator animator = ViewAnimator.animate(getRootView().findViewById(R.id.button)).path(path).repeatCount(Integer.MAX_VALUE).start();
+        animator.onStop(new AnimationListener.Stop() {
+            @Override
+            public void onStop() {
+
+            }
+        });
     }
 
 

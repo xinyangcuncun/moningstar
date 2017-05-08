@@ -35,6 +35,7 @@
         <activity android:name=".view.activity.PullToRefreshUseActivity" />
         <activity android:name=".view.activity.MultipleItemUseActivity" />
         <activity android:name=".view.activity.SectionUseActivity" />
+        <activity android:name=".view.activity.RetrofitMvpActivity" />
     </application>
 
 </manifest>
