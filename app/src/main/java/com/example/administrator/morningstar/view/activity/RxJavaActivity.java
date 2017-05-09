@@ -10,6 +10,7 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -102,7 +103,10 @@ public class RxJavaActivity extends BaseActivity{
             }
 
         });
-
+        String name = getIntent().getStringExtra("name");
+        String price = getIntent().getStringExtra("price");
+        String detail = getIntent().getStringExtra("detail");
+        Log.d("rxjavaActivity", name + price + detail);
     }
 
     private void initView() {
@@ -141,5 +145,14 @@ public class RxJavaActivity extends BaseActivity{
     public static void startMe(Context context) {
         Intent intent = new Intent(context,RxJavaActivity.class);
         context.startActivity(intent);
+    }
+
+    public static Intent startMeOut(Context context,boolean isAppAlive) {
+        Intent intent = new Intent(context,RxJavaActivity.class);
+        if (isAppAlive) {
+            return MainActivity.startAppOutside(context, intent);
+        } else {
+            return SplashActivity.startAppOutside(context, intent);
+        }
     }
 }

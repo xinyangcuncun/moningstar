@@ -13,13 +13,22 @@ import android.util.Log;
 
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Set;
 
 /**
  * Created by anson on 2017/4/5.
  */
 
-class AppKit {
+public class AppKit {
+
+    //前台运行
+    public static final int RUNNING_FRONT = 1;
+    //后台运行
+    public static final int RUNNING_BACKGROUND = 2;
+    //未运行
+    public static final int RUNNING_NOT = 3;
+
     /**
      * 重启App
      */
@@ -119,6 +128,32 @@ class AppKit {
             throw new RuntimeException(e);
         }
     }
+    /**
+     * 返回app运行状态
+     * 1:程序在前台运行
+     * 2:程序在后台运行
+     * 3:程序未启动
+     * 注意：需要配置权限<uses-permission android:name="android.permission.GET_TASKS" />
+     */
+    public static int getAppStatus(Context context, String pageName) {
+        ActivityManager am = (ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE);
+        List<ActivityManager.RunningTaskInfo> list = am.getRunningTasks(20);
 
+        //判断程序是否在栈顶
+        if (list.get(0).topActivity.getPackageName().equals(pageName)) {
+            //前台运行
+            return RUNNING_FRONT;
+        } else {
+            //判断程序是否在栈里
+            //后台运行
+            for (ActivityManager.RunningTaskInfo info : list) {
+                if (info.topActivity.getPackageName().equals(pageName)) {
+                    return RUNNING_BACKGROUND;
+                }
+            }
+            //栈里找不到，返回3
+            return RUNNING_NOT;
+        }
+    }
 
 }

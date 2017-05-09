@@ -2,6 +2,7 @@ package com.example.administrator.morningstar.view.activity;
 
 import android.animation.Animator;
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -19,6 +20,8 @@ import com.example.administrator.morningstar.view.tool.ApplicationIo;
 public class SplashActivity extends BaseActivity {
 
     private Handler handler = new Handler();
+    //外部启动目标intent
+    static final String GOTO_INTENT = "GOTO_INTENT";
 
     @Override
     protected boolean isShowToolbar() {
@@ -75,5 +78,18 @@ public class SplashActivity extends BaseActivity {
 
     @Override
     public void onBackPressed() {
+    }
+    static public Intent startAppOutside(Context context, @Nullable Intent gotoIntent) {
+        Intent intent = new Intent(context, SplashActivity.class);
+        //添加模拟HOME进入的标志
+        intent.setAction(Intent.ACTION_MAIN);
+            intent.addCategory(Intent.CATEGORY_LAUNCHER);
+            if (gotoIntent != null) {
+            intent.putExtra(GOTO_INTENT, gotoIntent);
+        }
+        //从外部进入，则还需要添加NEW_TASK, 避免App被杀死，无法进入的问题
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        context.startActivity(intent);
+        return intent;
     }
 }

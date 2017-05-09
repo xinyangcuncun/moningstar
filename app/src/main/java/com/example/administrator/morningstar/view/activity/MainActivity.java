@@ -1,6 +1,8 @@
 package com.example.administrator.morningstar.view.activity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -38,8 +40,25 @@ public class MainActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        initIntent();
         initView();
         initData(savedInstanceState);
+    }
+
+    private void initIntent() {
+        Bundle bundle = getIntent().getBundleExtra("haha");
+        if(bundle != null){
+            //如果bundle存在，取出其中的参数，启动DetailActivity
+            String name = bundle.getString("name");
+            String price = bundle.getString("price");
+            String detail = bundle.getString("detail");
+            Intent intent = new Intent(this,RxJavaActivity.class);
+            intent.putExtra("name", name);
+            intent.putExtra("price", price);
+            intent.putExtra("detail", detail);
+            startActivity(intent);
+            Log.i("mainactivity", "launchParam exists, redirect to DetailActivity");
+        }
     }
 
     @Override
@@ -240,7 +259,39 @@ public class MainActivity extends BaseActivity {
 
     public static void startMe(BaseActivity mContext) {
         Intent intent = new Intent(mContext, MainActivity.class);
+        if(mContext.getIntent().getBundleExtra("haha") != null){
+            intent.putExtra("haha", mContext.getIntent().getBundleExtra("haha"));
+        }
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
         mContext.startActivity(intent);
+    }
+
+    static public Intent startAppOutside(Context context, @Nullable Intent gotoIntent) {
+        Intent intent = new Intent(context, MainActivity.class);
+        if (gotoIntent != null) {
+            intent.putExtra(GOTO_INTENT, gotoIntent);
+        }
+        //添加清空top标志
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+        context.startActivity(intent);
+        return intent;
+    }
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        setIntent(intent);
+        gotoIntent(getIntent());
+        dealWithIntent();
+    }
+
+    private void gotoIntent(Intent intent) {
+        if (intent != null) {
+            Intent gotoIntent = intent.getParcelableExtra(GOTO_INTENT);
+            //如果请求跳转，则需要判断跳转时候前置Fragment是否被显示
+            //如果前置页面被否定，则不能跳转
+            if (gotoIntent != null) {
+                startActivity(gotoIntent);
+            }
+        }
     }
 }

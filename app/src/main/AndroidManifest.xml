@@ -48,6 +48,11 @@
             android:process=":pushservice">
         </service>
         <service android:name=".view.activity.DemoIntentService"/>
+        <receiver android:name=".view.activity.PlayerService">
+            <intent-filter>
+                <action android:name=".view.activity.PlayerService"/>
+            </intent-filter>
+        </receiver>
     </application>
 
 </manifest>
