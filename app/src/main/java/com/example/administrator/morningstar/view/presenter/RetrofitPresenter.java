@@ -16,7 +16,7 @@ public class RetrofitPresenter extends BasePresenter <VIgetView> {
         super(mContext);
     }
     public void getData() {
-        mvpTextView = getView().getMvpTextView();
-        mvpTextView.setText("已经通过Mvp完成数据传递");
+       /* mvpTextView = getView().getMvpTextView();
+        mvpTextView.setText("已经通过Mvp完成数据传递");*/
     }
 }

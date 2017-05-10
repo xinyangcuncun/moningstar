@@ -32,6 +32,7 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+    useLibrary 'org.apache.http.legacy'
 }
 
 dependencies {
@@ -51,5 +52,15 @@ dependencies {
     compile 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.13'
     compile 'com.getui:sdk:2.10.2.0'
     compile 'com.android.support:support-v4:+'
-
+    compile 'com.android.support:appcompat-v7:23.4.0'
+    //Optional compile for GCM (Google Cloud Messaging).
+    compile 'com.google.android.gms:play-services-gcm:9.4.0'
+    compile 'com.hyphenate:hyphenate-sdk:3.3.0'
+    //Zxing
+    compile 'com.google.zxing:core:3.2.1'
+    compile 'cn.bingoogolapple:bga-qrcodecore:1.1.7@aar'
+    compile 'cn.bingoogolapple:bga-zxing:1.1.7@aar'
+    compile 'cn.bingoogolapple:bga-refreshlayout:1.1.7'
+    compile 'com.lqr.imagepicker:library:1.0.0'
+    compile 'com.github.bumptech.glide:glide:3.7.0'
 }
