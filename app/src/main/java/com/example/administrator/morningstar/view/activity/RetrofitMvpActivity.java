@@ -121,6 +121,7 @@ public class RetrofitMvpActivity extends BaseMvpActivity<VIgetView,RetrofitPrese
 
     private void handleResult(String result) {
         Log.d("tag-result", result);
+        Toast.makeText(mContext,result,Toast.LENGTH_LONG).show();
         vibrate();
         zXingView.startSpot();
     }
