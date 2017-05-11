@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_above="@+id/til_password"
+        android:layout_centerInParent="true"
+        android:id="@+id/til_name"
+        android:layout_width="match_parent"
+        android:hint="请输入电话号码"
+        android:layout_height="wrap_content">
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_above="@+id/til_token"
+        android:layout_centerInParent="true"
+        android:id="@+id/til_password"
+        android:layout_width="match_parent"
+        android:hint="请输入密码（一但注册无法更改）"
+        android:layout_height="wrap_content">
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_above="@+id/rl_login"
+        android:layout_centerInParent="true"
+        android:id="@+id/til_token"
+        android:layout_width="match_parent"
+        android:hint="请输入验证码"
+        android:layout_height="wrap_content">
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </android.support.design.widget.TextInputLayout>
+
+    <RelativeLayout
+        android:layout_marginTop="10dp"
+        android:layout_centerInParent="true"
+        android:id="@+id/rl_login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <Button
+            android:id="@+id/bt_login"
+            android:layout_alignParentLeft="true"
+            android:text="登陆"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <Button
+            android:id="@+id/bt_regist"
+            android:layout_alignParentRight="true"
+            android:text="注册"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </RelativeLayout>
+
+</RelativeLayout>

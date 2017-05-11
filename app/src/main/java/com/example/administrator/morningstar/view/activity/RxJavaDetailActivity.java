@@ -16,9 +16,10 @@ import com.example.administrator.morningstar.view.base.BaseActivity;
 
 import java.util.concurrent.TimeUnit;
 
-import io.reactivex.Observable;
-import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.schedulers.Schedulers;
+import rx.Observable;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.schedulers.Schedulers;
+
 
 /**
  * Created by anson on 2017/4/13.

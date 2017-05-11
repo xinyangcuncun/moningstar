@@ -7,11 +7,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
+import android.text.TextUtils;
 
 import com.airbnb.lottie.LottieAnimationView;
 import com.example.administrator.morningstar.R;
 import com.example.administrator.morningstar.view.base.BaseActivity;
 import com.example.administrator.morningstar.view.tool.ApplicationIo;
+import com.example.administrator.morningstar.view.tool.UserCache;
 
 /**
  * Created by anson on 2017/4/5.
@@ -44,8 +46,15 @@ public class SplashActivity extends BaseActivity {
 
             @Override
             public void onAnimationEnd(Animator animation) {
-                MainActivity.startMe(mContext);
-                SplashActivity.this.finish();
+                //自动登陆
+                if (!TextUtils.isEmpty(UserCache.getToken())) {
+                    MainActivity.startMe(mContext);
+                    SplashActivity.this.finish();
+                } else {
+                    LoginActivity.startMe(mContext);
+                    SplashActivity.this.finish();
+                }
+
             }
 
             @Override

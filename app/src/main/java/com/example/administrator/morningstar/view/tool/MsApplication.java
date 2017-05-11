@@ -2,7 +2,9 @@ package com.example.administrator.morningstar.view.tool;
 
 import android.app.Activity;
 import android.app.Application;
+import android.content.Context;
 import android.net.Uri;
+import android.os.Handler;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
@@ -18,11 +20,20 @@ import com.lqr.imagepicker.view.CropImageView;
  */
 
 public class MsApplication extends Application {
+    private static Context mContext;
+    private static Thread mMainThread;
+    private static int mMainThreadId;
+    private static Handler mHandler;
+
     @Override
     public void onCreate() {
         //严苛模式
         KqcStrictMode.strictModeCheck();
         initImagePicker();
+        mContext = getApplicationContext();
+        mMainThread = Thread.currentThread();
+        mMainThreadId = android.os.Process.myTid();
+        mHandler = new Handler();
         super.onCreate();
     }
 
@@ -51,4 +62,20 @@ public class MsApplication extends Application {
         imagePicker.setOutPutY(1000);//保存文件的高度。单位像素
     }
 
+    public static Context getContext() {
+        return mContext;
+    }
+
+    public static Thread getMainThread() {
+        return mMainThread;
+    }
+
+
+    public static long getMainThreadId() {
+        return mMainThreadId;
+    }
+
+    public static Handler getMainHandler() {
+        return mHandler;
+    }
 }

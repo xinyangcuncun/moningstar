@@ -71,6 +71,8 @@
         <activity android:name=".view.activity.MultipleItemUseActivity" />
         <activity android:name=".view.activity.SectionUseActivity" />
         <activity android:name=".view.activity.RetrofitMvpActivity" />
+        <activity android:name=".view.activity.LoginActivity" />
+        <activity android:name=".view.activity.RegistActivity" />
         <service
             android:name=".view.activity.DemoPushService"
             android:exported="true"

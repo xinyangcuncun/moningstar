@@ -2,4 +2,10 @@
     <string name="app_name">MorningStar</string>
     <string name="open">打开</string>
     <string name="close">关闭</string>
+    <string name="login_error">登陆失败</string>
+    <string name="error_code">错误码</string>
+    <string name="send_code_error">注册失败</string>
+    <string name="phone_not_available">手机不可用</string>
+    <string name="vertify_code_error">手机号已存在</string>
+    <string name="register_error">注册失败</string>
 </resources>

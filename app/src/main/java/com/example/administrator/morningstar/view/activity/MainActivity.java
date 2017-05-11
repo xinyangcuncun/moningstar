@@ -265,6 +265,14 @@ public class MainActivity extends BaseActivity {
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
         mContext.startActivity(intent);
     }
+    public static void startMe(BaseMvpActivity mContext) {
+        Intent intent = new Intent(mContext, MainActivity.class);
+        if(mContext.getIntent().getBundleExtra("haha") != null){
+            intent.putExtra("haha", mContext.getIntent().getBundleExtra("haha"));
+        }
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+        mContext.startActivity(intent);
+    }
 
     static public Intent startAppOutside(Context context, @Nullable Intent gotoIntent) {
         Intent intent = new Intent(context, MainActivity.class);
