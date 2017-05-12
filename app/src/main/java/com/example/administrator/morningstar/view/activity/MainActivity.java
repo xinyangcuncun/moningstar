@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 
 import com.example.administrator.morningstar.R;
 import com.example.administrator.morningstar.view.base.BaseActivity;
@@ -36,6 +37,7 @@ public class MainActivity extends BaseActivity {
 
     public static final int REQUEST_CODE = 200;
     private int targetIndex;
+    private TextView tvToolBarTitle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -101,6 +103,7 @@ public class MainActivity extends BaseActivity {
     }
 
     private void initData(Bundle savedInstanceState) {
+        tvToolBarTitle.setText("泰国、新加波、印度尼西亚");
         if (savedInstanceState == null) {
             dealWithIntent();
         } else {
@@ -250,6 +253,7 @@ public class MainActivity extends BaseActivity {
     private void initView() {
         rgMainNavGroup = (RadioGroup) findViewById(R.id.rg_main_nav_group);
         flMainNavPublishCar = (FrameLayout) findViewById(R.id.fl_main_nav_publish_car);
+        tvToolBarTitle = (TextView) findViewById(R.id.tv_toolbar_title);
     }
 
     @Override

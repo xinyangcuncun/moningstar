@@ -50,8 +50,8 @@ public class BaseApiRetrofit {
 
         //OkHttpClient
         mClient = new OkHttpClient.Builder()
-                .addInterceptor(REWRITE_HEADER_CONTROL_INTERCEPTOR)
-                .addInterceptor(REWRITE_CACHE_CONTROL_INTERCEPTOR)
+                .addInterceptor(REWRITE_HEADER_CONTROL_INTERCEPTOR)  //请求头信息
+                .addInterceptor(REWRITE_CACHE_CONTROL_INTERCEPTOR)   //缓存信息
                 .addInterceptor(new LoggingInterceptor())
 //                .addInterceptor(loggingInterceptor)//设置 Debug Log 模式
                 .cache(cache)

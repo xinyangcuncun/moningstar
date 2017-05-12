@@ -10,17 +10,23 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.administrator.morningstar.R;
+import com.example.administrator.morningstar.view.tool.JJBarWithErrorIconController;
+import com.example.administrator.morningstar.view.tool.JJSearchView;
+import com.gjiazhe.panoramaimageview.GyroscopeObserver;
+import com.gjiazhe.panoramaimageview.PanoramaImageView;
+import com.wingsofts.threedlayout.ThreeDLayout;
 
 /**
  * Created by anson on 2017/4/5.
  */
 
 public class MineFragment extends BaseFragment{
-    private TextView mTextView;
+    private GyroscopeObserver gyroscopeObserver;
+    private ThreeDLayout threeDLayout;
 
     @Override
     protected int getViewLayout() {
-        return R.layout.fragment_main_home;
+        return R.layout.fragment_main_guangzhou;
     }
     public static MineFragment newInstance() {
         MineFragment homeFragment = new MineFragment();
@@ -33,25 +39,24 @@ public class MineFragment extends BaseFragment{
     }
 
     private void initView() {
-        mTextView = (TextView) getRootView().findViewById(R.id.tv_test_name);
-        mTextView.setText("数据库");
-        mTextView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                PackageInfo info;
-                try {
-                    info = mContext.getPackageManager().getPackageInfo(mContext.getPackageName(), 0);
-                    // 当前应用的版本名称
-                    String versionName = info.versionName;
-                    // 当前版本的版本号
-                    int versionCode = info.versionCode;
-                    // 当前版本的包名
-                    String packageNames = info.packageName;
-                    Log.d("tag", packageNames);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        });
+        threeDLayout = (ThreeDLayout) getRootView().findViewById(R.id.three_layout);
+        threeDLayout.setTouchMode(ThreeDLayout.MODE_BOTH_X_Y);
+        threeDLayout.setMaxRotateDegree(200);
+
+        gyroscopeObserver = new GyroscopeObserver();
+        PanoramaImageView panoramaImageView = (PanoramaImageView) getRootView().findViewById(R.id.panorama_image_view);
+        panoramaImageView.setGyroscopeObserver(gyroscopeObserver);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        gyroscopeObserver.register(mContext);
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        gyroscopeObserver.unregister();
     }
 }
