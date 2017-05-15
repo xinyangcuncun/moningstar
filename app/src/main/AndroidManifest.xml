@@ -73,6 +73,7 @@
         <activity android:name=".view.activity.RetrofitMvpActivity" />
         <activity android:name=".view.activity.LoginActivity" />
         <activity android:name=".view.activity.RegistActivity" />
+        <activity android:name=".view.activity.BezierViewActivity"></activity>
         <service
             android:name=".view.activity.DemoPushService"
             android:exported="true"
