@@ -63,13 +63,13 @@
                 android:id="@+id/rb_main_nav_home"
                 style="@style/indexRadioButton"
                 android:drawableTop="@drawable/selector_main_home"
-                android:text="动画" />
+                android:text="上海" />
 
             <RadioButton
                 android:id="@+id/rb_main_nav_car_source"
                 style="@style/indexRadioButton"
                 android:drawableTop="@drawable/selector_main_car_source"
-                android:text="自定义控件" />
+                android:text="杭州" />
 
             <FrameLayout
                 android:id="@+id/fl_main_nav_publish_car"
@@ -88,7 +88,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="bottom|center_horizontal"
-                    android:text="网络"
+                    android:text="北京"
                     android:textColor="@color/white"
                     android:textSize="11sp" />
             </FrameLayout>
@@ -97,12 +97,12 @@
                 android:id="@+id/rb_main_customer_service.xml"
                 style="@style/indexRadioButton"
                 android:drawableTop="@drawable/selector_main_customer_service"
-                android:text="新技术" />
+                android:text="深圳" />
             <RadioButton
                 android:id="@+id/rb_main_nav_mine"
                 style="@style/indexRadioButton"
                 android:drawableTop="@drawable/selector_main_mine"
-                android:text="数据库" />
+                android:text="广州" />
         </RadioGroup>
     </FrameLayout>
 </LinearLayout>

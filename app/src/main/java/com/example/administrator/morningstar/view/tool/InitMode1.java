@@ -24,12 +24,9 @@ class InitMode1 {
         //设置全局异常处理
         {
             //重启
-            Thread.setDefaultUncaughtExceptionHandler(new Thread.UncaughtExceptionHandler() {
-                @Override
-                public void uncaughtException(Thread thread, Throwable ex) {
-                    Log.e(thread.getName(), ex.getMessage(), ex);
-                    ApplicationIo.getInstance(mContext).kill(true);
-                }
+            Thread.setDefaultUncaughtExceptionHandler((thread, ex) -> {
+                Log.e(thread.getName(), ex.getMessage(), ex);
+                ApplicationIo.getInstance(mContext).kill(true);
             });
         }
     }
