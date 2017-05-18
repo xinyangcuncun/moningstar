@@ -28,7 +28,7 @@ public abstract class BaseMvpActivity<V, T extends BasePresenter<V>> extends App
     private TextView mTitle;
     private FrameLayout mBaseView;
     private FrameLayout mBaseViews;
-    protected T mPresenter;
+    protected T     mPresenter;
 
 
     @Override

@@ -2,10 +2,17 @@ package com.example.administrator.morningstar.view.activity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.widget.NavigationView;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.RadioGroup;
@@ -15,7 +22,7 @@ import com.example.administrator.morningstar.R;
 import com.example.administrator.morningstar.view.base.BaseActivity;
 import com.example.administrator.morningstar.view.tool.ApplicationIo;
 
-public class MainActivity extends BaseActivity {
+public class MainActivity extends BaseActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private RadioGroup rgMainNavGroup;
     private int currentCheckedId;
@@ -38,6 +45,7 @@ public class MainActivity extends BaseActivity {
     public static final int REQUEST_CODE = 200;
     private int targetIndex;
     private TextView tvToolBarTitle;
+    private Toolbar tvToolBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -254,6 +262,18 @@ public class MainActivity extends BaseActivity {
         rgMainNavGroup = (RadioGroup) findViewById(R.id.rg_main_nav_group);
         flMainNavPublishCar = (FrameLayout) findViewById(R.id.fl_main_nav_publish_car);
         tvToolBarTitle = (TextView) findViewById(R.id.tv_toolbar_title);
+        tvToolBarTitle = (TextView) findViewById(R.id.tv_toolbar_title);
+        tvToolBar = (Toolbar) findViewById(R.id.tb_app_bar);
+        setSupportActionBar(tvToolBar);
+
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+                this, drawer, tvToolBar, R.string.open, R.string.close);
+        drawer.setDrawerListener(toggle);
+        toggle.syncState();
+
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
     }
 
     @Override
@@ -304,6 +324,28 @@ public class MainActivity extends BaseActivity {
             if (gotoIntent != null) {
                 startActivity(gotoIntent);
             }
+        }
+    }
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.nav_camera:
+                FashionSplashActivity.startMe(mContext);
+                break;
+        }
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        drawer.closeDrawer(GravityCompat.START);
+        return false;
+    }
+
+    @Override
+    public void onBackPressed() {
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        if (drawer.isDrawerOpen(GravityCompat.START)) {
+            drawer.closeDrawer(GravityCompat.START);
+        } else {
+            super.onBackPressed();
         }
     }
 }
