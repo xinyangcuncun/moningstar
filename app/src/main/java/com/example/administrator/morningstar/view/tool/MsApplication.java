@@ -5,6 +5,7 @@ import android.app.Application;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Handler;
+import android.support.multidex.MultiDexApplication;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
@@ -19,7 +20,7 @@ import com.lqr.imagepicker.view.CropImageView;
  * Created by anson on 2017/4/5.
  */
 
-public class MsApplication extends Application {
+public class MsApplication extends MultiDexApplication {
     private static Context mContext;
     private static Thread mMainThread;
     private static int mMainThreadId;

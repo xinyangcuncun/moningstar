@@ -1,5 +1,6 @@
 apply plugin: 'com.android.application'
-
+apply plugin:'kotlin-android'
+apply plugin:'kotlin-android-extensions'
 android {
     compileSdkVersion 25
     buildToolsVersion '25.0.3'
@@ -21,6 +22,8 @@ android {
         ndk {
             abiFilters "armeabi", "armeabi-v7a", "x86_64"
         }
+
+        multiDexEnabled true
     }
     buildTypes {
         release {
@@ -81,4 +84,10 @@ dependencies {
 
     compile 'com.gjiazhe:PanoramaImageView:1.0'
     compile 'com.github.githubwing:ThreeDLayout:1.0.0'
+
+    compile 'org.jetbrains.kotlin:kotlin-stdlib:1.1.1'
+    compile 'org.jetbrains.anko:anko-sdk25:0.10.0-beta-1'// sdk15, sdk19, sdk21, sdk23 are also available
+    compile 'org.jetbrains.anko:anko-appcompat-v7:0.10.0-beta-1'
+
+    compile 'com.android.support:multidex:1.0.1'
 }
