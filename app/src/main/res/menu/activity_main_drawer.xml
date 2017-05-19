@@ -4,13 +4,13 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_camera"
-            android:title="时尚欢迎页" />
+            android:title="fashion" />
         <item
             android:id="@+id/nav_gallery"
-            android:title="Gallery" />
+            android:title="live" />
         <item
             android:id="@+id/nav_slideshow"
-            android:title="Slideshow" />
+            android:title="退出登陆" />
         <item
             android:id="@+id/nav_manage"
             android:title="Tools" />

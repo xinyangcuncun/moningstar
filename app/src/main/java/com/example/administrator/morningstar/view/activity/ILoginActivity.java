@@ -2,6 +2,7 @@ package com.example.administrator.morningstar.view.activity;
 
 import android.support.design.widget.TextInputEditText;
 import android.support.design.widget.TextInputLayout;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 
 /**
@@ -16,5 +17,4 @@ public interface ILoginActivity {
     TextInputLayout getTieName();
 
     TextInputLayout getTiePassword();
-
 }

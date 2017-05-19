@@ -45,7 +45,7 @@ class FashionSplashActivity : BaseActivity() {
             if (welcome_videoview.isPlaying) {
                 welcome_videoview.stopPlayback()
             }
-            finish() }
+            finish()
+        }
     }
-
 }

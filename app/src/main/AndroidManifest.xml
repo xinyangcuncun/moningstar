@@ -74,6 +74,7 @@
         <activity android:name=".view.activity.LoginActivity" />
         <activity android:name=".view.activity.RegistActivity" />
         <activity android:name=".view.activity.FashionSplashActivity" />
+        <activity android:name=".view.activity.FashionLiveActivity" />
         <activity android:name=".view.activity.BezierViewActivity"></activity>
         <service
             android:name=".view.activity.DemoPushService"

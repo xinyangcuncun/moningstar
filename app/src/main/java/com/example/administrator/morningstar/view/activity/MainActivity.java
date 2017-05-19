@@ -21,6 +21,7 @@ import android.widget.TextView;
 import com.example.administrator.morningstar.R;
 import com.example.administrator.morningstar.view.base.BaseActivity;
 import com.example.administrator.morningstar.view.tool.ApplicationIo;
+import com.example.administrator.morningstar.view.tool.UserCache;
 
 public class MainActivity extends BaseActivity implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -332,6 +333,13 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
         switch (item.getItemId()) {
             case R.id.nav_camera:
                 FashionSplashActivity.Companion.startMe(mContext);
+                break;
+            case R.id.nav_gallery:
+                FashionLiveActivity.Companion.startMe(mContext);
+                break;
+            case R.id.nav_slideshow:
+                UserCache.clear();
+                LoginActivity.startMe(mContext);
                 break;
         }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

@@ -1,5 +1,5 @@
 # MoningStar
-这个项目集成了很多潮流功能：全景图片预览、3D特效、MVP+retrofit+Rxjava、超级动画等
+这个项目集成了很多潮流功能：全景图片预览、3D特效、MVP+retrofit+Rxjava+lambda+kotlin、超级动画、等
 
 常用功能：
 
