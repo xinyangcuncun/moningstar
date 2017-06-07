@@ -1,6 +1,8 @@
 package com.example.administrator.morningstar.view.activity
 
 import android.content.Intent
+import android.os.Bundle
+import com.example.administrator.morningstar.R
 import com.example.administrator.morningstar.view.base.BaseActivity
 
 /**
@@ -9,20 +11,34 @@ import com.example.administrator.morningstar.view.base.BaseActivity
 
 class FashionLiveActivity : BaseActivity() {
     override fun getToolBarTitle(): CharSequence {
-        return ""
+        return "直播间"
     }
 
     override fun isShowToolbar(): Boolean {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        return true
     }
 
     override fun getViewLayout(): Int {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        return R.layout.activity_fashion_live
     }
 
     companion object {
         fun startMe(mContext: BaseActivity) {
             mContext.startActivity(Intent(mContext, FashionLiveActivity::class.java))
         }
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        initView()
+        initData()
+    }
+
+    private fun initData() {
+
+    }
+
+    private fun initView() {
+
     }
 }

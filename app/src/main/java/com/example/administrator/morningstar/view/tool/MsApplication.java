@@ -1,6 +1,7 @@
 package com.example.administrator.morningstar.view.tool;
 
 import android.app.Activity;
+import android.app.ActivityManager;
 import android.app.Application;
 import android.content.Context;
 import android.net.Uri;
@@ -9,18 +10,22 @@ import android.support.multidex.MultiDexApplication;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
-import com.example.administrator.morningstar.view.activity.DemoIntentService;
-import com.example.administrator.morningstar.view.activity.DemoPushService;
-import com.igexin.sdk.PushManager;
+
 import com.lqr.imagepicker.ImagePicker;
 import com.lqr.imagepicker.loader.ImageLoader;
 import com.lqr.imagepicker.view.CropImageView;
+
+
+import io.rong.imlib.RongIMClient;
+
+import io.rong.imlib.model.Message;
+
 
 /**
  * Created by anson on 2017/4/5.
  */
 
-public class MsApplication extends MultiDexApplication {
+public class MsApplication extends MultiDexApplication implements RongIMClient.OnReceiveMessageListener {
     private static Context mContext;
     private static Thread mMainThread;
     private static int mMainThreadId;
@@ -28,6 +33,7 @@ public class MsApplication extends MultiDexApplication {
 
     @Override
     public void onCreate() {
+        super.onCreate();
         //严苛模式
         KqcStrictMode.strictModeCheck();
         initImagePicker();
@@ -35,9 +41,31 @@ public class MsApplication extends MultiDexApplication {
         mMainThread = Thread.currentThread();
         mMainThreadId = android.os.Process.myTid();
         mHandler = new Handler();
-        super.onCreate();
-    }
+        //融云初始化
+        if (getApplicationInfo().packageName.equals(getCurProcessName(getApplicationContext())) ||
+                "io.rong.push".equals(getCurProcessName(getApplicationContext()))) {
+            RongIMClient.init(this);
+        }
+        //监听接收到的消息
+        RongIMClient.setOnReceiveMessageListener(this);
 
+    }
+    public static String getCurProcessName(Context context) {
+
+        int pid = android.os.Process.myPid();
+
+        ActivityManager activityManager = (ActivityManager) context
+                .getSystemService(Context.ACTIVITY_SERVICE);
+
+        for (ActivityManager.RunningAppProcessInfo appProcess : activityManager
+                .getRunningAppProcesses()) {
+
+            if (appProcess.pid == pid) {
+                return appProcess.processName;
+            }
+        }
+        return null;
+    }
 
     private void initImagePicker() {
         ImagePicker imagePicker = ImagePicker.getInstance();
@@ -78,5 +106,11 @@ public class MsApplication extends MultiDexApplication {
 
     public static Handler getMainHandler() {
         return mHandler;
+    }
+
+    @Override
+    public boolean onReceived(Message message, int i) {
+
+        return false;
     }
 }

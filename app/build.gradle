@@ -1,6 +1,7 @@
 apply plugin: 'com.android.application'
 apply plugin:'kotlin-android'
 apply plugin:'kotlin-android-extensions'
+apply plugin: 'org.greenrobot.greendao'
 android {
     compileSdkVersion 25
     buildToolsVersion '25.0.3'
@@ -21,6 +22,11 @@ android {
         ]
         ndk {
             abiFilters "armeabi", "armeabi-v7a", "x86_64","x86"
+        }
+        greendao{
+            schemaVersion 1
+            daoPackage 'com.example.administrator.morningstar.view.db'
+            targetGenDir 'src/main/java'
         }
 
         multiDexEnabled true
@@ -90,4 +96,10 @@ dependencies {
     compile 'org.jetbrains.anko:anko-appcompat-v7:0.10.0-beta-1'
 
     compile 'com.android.support:multidex:1.0.1'
+    compile 'com.alibaba:fastjson:1.2.29'
+    compile 'org.litepal.android:core:1.5.0'
+
+    //数据库
+    compile 'org.greenrobot:greendao:3.2.2'
+    compile 'com.github.yuweiguocn:GreenDaoUpgradeHelper:v1.3.0'
 }

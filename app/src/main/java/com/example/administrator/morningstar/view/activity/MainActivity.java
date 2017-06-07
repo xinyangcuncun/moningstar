@@ -335,11 +335,14 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
                 FashionSplashActivity.Companion.startMe(mContext);
                 break;
             case R.id.nav_gallery:
-                FashionLiveActivity.Companion.startMe(mContext);
+                MessageListActivity.startMe(mContext);
                 break;
             case R.id.nav_slideshow:
                 UserCache.clear();
                 LoginActivity.startMe(mContext);
+                break;
+            case R.id.nav_manage:
+                FashionLiveActivity.Companion.startMe(mContext);
                 break;
         }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

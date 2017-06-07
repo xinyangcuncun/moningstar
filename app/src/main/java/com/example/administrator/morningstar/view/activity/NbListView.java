@@ -68,6 +68,7 @@ public class NbListView extends BaseActivity{
     private void initView() {
         recyclerView = (RecyclerView) findViewById(R.id.rv_list);
         recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
+        recyclerView.addItemDecoration(new SpacesItemDecoration(10));
         mDataList = new ArrayList<>();
         for (int i = 0; i < TITLE.length; i++) {
             HomeItem item = new HomeItem();
@@ -76,4 +77,6 @@ public class NbListView extends BaseActivity{
             mDataList.add(item);
         }
     }
+
+
 }
