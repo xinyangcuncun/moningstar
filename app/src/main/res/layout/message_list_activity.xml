@@ -13,6 +13,8 @@
     </android.support.v7.widget.RecyclerView>
 
     <TextView
+        android:gravity="center"
+        android:text="申请文件读写权限"
         android:id="@+id/hhhhhhh"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />

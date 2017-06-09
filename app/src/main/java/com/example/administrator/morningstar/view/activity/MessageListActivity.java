@@ -6,7 +6,9 @@ import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.administrator.morningstar.Manifest;
 import com.example.administrator.morningstar.R;
 import com.example.administrator.morningstar.view.base.BaseActivity;
 import com.example.administrator.morningstar.view.db.DaoMaster;
@@ -15,8 +17,11 @@ import com.example.administrator.morningstar.view.db.GreenDaoManager;
 import com.example.administrator.morningstar.view.db.MyBean;
 import com.example.administrator.morningstar.view.db.MyBeanDao;
 import com.example.administrator.morningstar.view.presenter.MessageListPresenter;
+import com.yanzhenjie.permission.AndPermission;
+import com.yanzhenjie.permission.PermissionListener;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 /**
  * Created by anson on 2017/5/25.
@@ -63,22 +68,59 @@ public class MessageListActivity extends BaseMvpActivity<IMessageListActivity,Me
         tv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //初始化数据库
-                /*DaoMaster.DevOpenHelper devOpenHelper = new DaoMaster.DevOpenHelper(getApplicationContext(), "lenve.db", null);
-                DaoMaster daoMaster = new DaoMaster(devOpenHelper.getWritableDb());
-                DaoSession daoSession = daoMaster.newSession();*/
-                DaoSession daoSession = GreenDaoManager.getInstance(mContext.getApplicationContext()).getSession();
-
-                MyBeanDao myBeanDao = daoSession.getMyBeanDao();//  获取一个表
-
-                MyBean myBean = new MyBean(null,"haha","heee" );
-                myBeanDao.insert(myBean);                       //增加一条数据
-
-
+                AndPermission.with(MessageListActivity.this)
+                        .requestCode(100)
+                        .permission(android.Manifest.permission.WRITE_EXTERNAL_STORAGE, android.Manifest.permission.MOUNT_UNMOUNT_FILESYSTEMS).callback(listener).start();
             }
         });
     }
 
+    private PermissionListener listener = new PermissionListener() {
+        @Override
+        public void onSucceed(int requestCode, List<String> grantedPermissions) {
+
+            if(requestCode == 100) {
+                if (AndPermission.hasPermission(mContext,android.Manifest.permission.WRITE_EXTERNAL_STORAGE, android.Manifest.permission.MOUNT_UNMOUNT_FILESYSTEMS)) {
+                    Toast.makeText(mContext,"haha",Toast.LENGTH_LONG).show();
+                } else {
+                    AndPermission.defaultSettingDialog(MessageListActivity.this, 400)
+                            .setTitle("权限申请失败")
+                            .setMessage("您拒绝了我们必要的一些权限，已经没法愉快的玩耍了，请在设置中授权！")
+                            .setPositiveButton("好，去设置")
+                            .show();
+                }
+                Toast.makeText(mContext,"haha",Toast.LENGTH_LONG).show();
+            }
+        }
+
+        @Override
+        public void onFailed(int requestCode, List<String> deniedPermissions) {
+            // 权限申请失败回调。
+            if(requestCode == 100) {
+
+               /* if (AndPermission.hasAlwaysDeniedPermission(MessageListActivity.this, deniedPermissions)) {
+                    // 第二种：用自定义的提示语。
+                    AndPermission.defaultSettingDialog(MessageListActivity.this, 400)
+                            .setTitle("权限申请失败")
+                            .setMessage("您拒绝了我们必要的一些权限，已经没法愉快的玩耍了，请在设置中授权！")
+                            .setPositiveButton("好，去设置")
+                            .show();
+
+                }*/
+
+                if (AndPermission.hasPermission(mContext, android.Manifest.permission.WRITE_EXTERNAL_STORAGE, android.Manifest.permission.MOUNT_UNMOUNT_FILESYSTEMS)) {
+                    Toast.makeText(mContext,"hehe",Toast.LENGTH_LONG).show();
+                } else {
+                    AndPermission.defaultSettingDialog(MessageListActivity.this, 400)
+                            .setTitle("权限申请失败")
+                            .setMessage("您拒绝了我们必要的一些权限，已经没法愉快的玩耍了，请在设置中授权！")
+                            .setPositiveButton("好，去设置")
+                            .show();
+
+                }
+            }
+        }
+    };
     @Override
     public RecyclerView getRv() {
         return recyclerView;
@@ -95,5 +137,15 @@ public class MessageListActivity extends BaseMvpActivity<IMessageListActivity,Me
             newAmount = String.valueOf(amount);
         }
         return newAmount;
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        switch (requestCode) {
+            case 400: { // 这个400就是你上面传入的数字。
+                Toast.makeText(mContext,"hehe",Toast.LENGTH_LONG).show();
+                break;
+            }
+        }
     }
 }
