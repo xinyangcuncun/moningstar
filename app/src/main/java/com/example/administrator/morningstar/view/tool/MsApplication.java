@@ -11,21 +11,22 @@ import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 
+import com.liulishuo.filedownloader.FileDownloader;
+import com.liulishuo.filedownloader.connection.FileDownloadUrlConnection;
+import com.liulishuo.filedownloader.services.DownloadMgrInitialParams;
 import com.lqr.imagepicker.ImagePicker;
 import com.lqr.imagepicker.loader.ImageLoader;
 import com.lqr.imagepicker.view.CropImageView;
 
 
-import io.rong.imlib.RongIMClient;
-
-import io.rong.imlib.model.Message;
+import java.net.Proxy;
 
 
 /**
  * Created by anson on 2017/4/5.
  */
 
-public class MsApplication extends MultiDexApplication implements RongIMClient.OnReceiveMessageListener {
+public class MsApplication extends MultiDexApplication  {
     private static Context mContext;
     private static Thread mMainThread;
     private static int mMainThreadId;
@@ -42,14 +43,22 @@ public class MsApplication extends MultiDexApplication implements RongIMClient.O
         mMainThreadId = android.os.Process.myTid();
         mHandler = new Handler();
         //融云初始化
-        if (getApplicationInfo().packageName.equals(getCurProcessName(getApplicationContext())) ||
-                "io.rong.push".equals(getCurProcessName(getApplicationContext()))) {
-            RongIMClient.init(this);
-        }
-        //监听接收到的消息
-        RongIMClient.setOnReceiveMessageListener(this);
+
+        //初始化下载模块
+        initDownLoad();
 
     }
+
+    private void initDownLoad() {
+        FileDownloader.init(getApplicationContext(), new DownloadMgrInitialParams.InitCustomMaker()
+                .connectionCreator(new FileDownloadUrlConnection
+                        .Creator(new FileDownloadUrlConnection.Configuration()
+                        .connectTimeout(15_000) // set connection timeout.
+                        .readTimeout(15_000) // set read timeout.
+                        .proxy(Proxy.NO_PROXY) // set proxy
+                )).maxNetworkThreadCount(1));
+    }
+
     public static String getCurProcessName(Context context) {
 
         int pid = android.os.Process.myPid();
@@ -108,9 +117,5 @@ public class MsApplication extends MultiDexApplication implements RongIMClient.O
         return mHandler;
     }
 
-    @Override
-    public boolean onReceived(Message message, int i) {
 
-        return false;
-    }
 }

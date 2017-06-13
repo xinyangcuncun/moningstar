@@ -12,9 +12,14 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        dexOptions {
+            javaMaxHeapSize "4g"
+        }
+
         jackOptions {
             enabled true
         }
+
         manifestPlaceholders = [
                 GETUI_APP_ID : "0SX00lfWcI7ASR8CZEaGE9",
                 GETUI_APP_KEY : "MQW5BXR1jA7NvfWlehPFO2",
@@ -105,4 +110,7 @@ dependencies {
 
     //申请权限
     compile 'com.yanzhenjie:permission:1.0.8'
+
+    //下载模块
+    compile 'com.liulishuo.filedownloader:library:1.5.5'
 }

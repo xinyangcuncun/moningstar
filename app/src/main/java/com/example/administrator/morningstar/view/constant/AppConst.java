@@ -8,6 +8,17 @@ package com.example.administrator.morningstar.view.constant;
  */
 public class AppConst {
 
+    //下载状态
+    public static final int BEGGIN = 0;
+    public static final int LOAING = 1;
+    public static final int DOWNING = 2;
+    public static final int CANCLE = 3;
+    public static final int ERROR = 4;
+    public static final int ENDING = 5;
+    public static final int PENDING = 6;
+    public static final String DOWN_UPDATE = "DOWN_UPDATE";
+
+
     public static final String TAG = "CSDN_LQR";
 
     public static final String REGION = "86";

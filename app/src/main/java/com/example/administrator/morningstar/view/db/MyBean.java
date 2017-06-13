@@ -16,14 +16,36 @@ public class MyBean {
     private String username;
     @Property(nameInDb = "NICKNAME")
     private String nickname;
-    @Generated(hash = 1976835673)
-    public MyBean(Long id, String username, String nickname) {
+
+    private int state;
+    private String filepath;
+    private float progress;
+    private int downid;
+    private String url;
+
+    public MyBean(Long id, String username, String nickname, int state,
+            String filepath, float progress) {
         this.id = id;
         this.username = username;
         this.nickname = nickname;
+        this.state = state;
+        this.filepath = filepath;
+        this.progress = progress;
     }
     @Generated(hash = 1281580447)
     public MyBean() {
+    }
+    @Generated(hash = 2011086007)
+    public MyBean(Long id, String username, String nickname, int state,
+            String filepath, float progress, int downid, String url) {
+        this.id = id;
+        this.username = username;
+        this.nickname = nickname;
+        this.state = state;
+        this.filepath = filepath;
+        this.progress = progress;
+        this.downid = downid;
+        this.url = url;
     }
     public Long getId() {
         return this.id;
@@ -42,6 +64,36 @@ public class MyBean {
     }
     public void setNickname(String nickname) {
         this.nickname = nickname;
+    }
+    public int getState() {
+        return this.state;
+    }
+    public void setState(int state) {
+        this.state = state;
+    }
+    public String getFilepath() {
+        return this.filepath;
+    }
+    public void setFilepath(String filepath) {
+        this.filepath = filepath;
+    }
+    public float getProgress() {
+        return this.progress;
+    }
+    public void setProgress(float progress) {
+        this.progress = progress;
+    }
+    public int getDownid() {
+        return this.downid;
+    }
+    public void setDownid(int downid) {
+        this.downid = downid;
+    }
+    public String getUrl() {
+        return this.url;
+    }
+    public void setUrl(String url) {
+        this.url = url;
     }
 
 }

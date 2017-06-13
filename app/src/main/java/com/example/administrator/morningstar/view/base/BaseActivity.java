@@ -18,6 +18,8 @@ import com.example.administrator.morningstar.view.activity.DemoPushService;
 import com.example.administrator.morningstar.view.tool.ViewTools;
 import com.igexin.sdk.PushManager;
 
+import org.simple.eventbus.EventBus;
+
 
 /**
  * Created by Anson on 2017/2/5.
@@ -38,6 +40,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        EventBus.getDefault().register(this);
         ViewTools.setActivityBackGroudCoulor(this, Color.parseColor("#ffffff"));
         super.setContentView(R.layout.activity_base);
         PushManager.getInstance().initialize(this.getApplicationContext(), DemoPushService.class);
@@ -76,4 +79,11 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected abstract CharSequence getToolBarTitle();
 
     protected abstract boolean isShowToolbar();
+
+    @Override
+    protected void onDestroy() {
+        EventBus.getDefault().unregister(this);
+        super.onDestroy();
+
+    }
 }

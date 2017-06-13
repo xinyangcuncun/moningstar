@@ -93,6 +93,8 @@
         <activity android:name=".view.activity.FashionLiveActivity" />
         <activity android:name=".view.activity.BezierViewActivity"></activity>
         <activity android:name=".view.activity.MessageListActivity"></activity>
+        <activity android:name=".view.activity.DownLoadActivity"></activity>
+        <activity android:name=".view.activity.DownLoadListActivity"></activity>
         <service
             android:name=".view.activity.DemoPushService"
             android:exported="true"

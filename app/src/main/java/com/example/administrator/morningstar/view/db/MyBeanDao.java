@@ -25,6 +25,11 @@ public class MyBeanDao extends AbstractDao<MyBean, Long> {
         public final static Property Id = new Property(0, Long.class, "id", true, "_id");
         public final static Property Username = new Property(1, String.class, "username", false, "USERNAME");
         public final static Property Nickname = new Property(2, String.class, "nickname", false, "NICKNAME");
+        public final static Property State = new Property(3, int.class, "state", false, "STATE");
+        public final static Property Filepath = new Property(4, String.class, "filepath", false, "FILEPATH");
+        public final static Property Progress = new Property(5, float.class, "progress", false, "PROGRESS");
+        public final static Property Downid = new Property(6, int.class, "downid", false, "DOWNID");
+        public final static Property Url = new Property(7, String.class, "url", false, "URL");
     }
 
 
@@ -42,7 +47,12 @@ public class MyBeanDao extends AbstractDao<MyBean, Long> {
         db.execSQL("CREATE TABLE " + constraint + "\"MY_BEAN\" (" + //
                 "\"_id\" INTEGER PRIMARY KEY ," + // 0: id
                 "\"USERNAME\" TEXT," + // 1: username
-                "\"NICKNAME\" TEXT);"); // 2: nickname
+                "\"NICKNAME\" TEXT," + // 2: nickname
+                "\"STATE\" INTEGER NOT NULL ," + // 3: state
+                "\"FILEPATH\" TEXT," + // 4: filepath
+                "\"PROGRESS\" REAL NOT NULL ," + // 5: progress
+                "\"DOWNID\" INTEGER NOT NULL ," + // 6: downid
+                "\"URL\" TEXT);"); // 7: url
     }
 
     /** Drops the underlying database table. */
@@ -69,6 +79,19 @@ public class MyBeanDao extends AbstractDao<MyBean, Long> {
         if (nickname != null) {
             stmt.bindString(3, nickname);
         }
+        stmt.bindLong(4, entity.getState());
+ 
+        String filepath = entity.getFilepath();
+        if (filepath != null) {
+            stmt.bindString(5, filepath);
+        }
+        stmt.bindDouble(6, entity.getProgress());
+        stmt.bindLong(7, entity.getDownid());
+ 
+        String url = entity.getUrl();
+        if (url != null) {
+            stmt.bindString(8, url);
+        }
     }
 
     @Override
@@ -89,6 +112,19 @@ public class MyBeanDao extends AbstractDao<MyBean, Long> {
         if (nickname != null) {
             stmt.bindString(3, nickname);
         }
+        stmt.bindLong(4, entity.getState());
+ 
+        String filepath = entity.getFilepath();
+        if (filepath != null) {
+            stmt.bindString(5, filepath);
+        }
+        stmt.bindDouble(6, entity.getProgress());
+        stmt.bindLong(7, entity.getDownid());
+ 
+        String url = entity.getUrl();
+        if (url != null) {
+            stmt.bindString(8, url);
+        }
     }
 
     @Override
@@ -101,7 +137,12 @@ public class MyBeanDao extends AbstractDao<MyBean, Long> {
         MyBean entity = new MyBean( //
             cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0), // id
             cursor.isNull(offset + 1) ? null : cursor.getString(offset + 1), // username
-            cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2) // nickname
+            cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2), // nickname
+            cursor.getInt(offset + 3), // state
+            cursor.isNull(offset + 4) ? null : cursor.getString(offset + 4), // filepath
+            cursor.getFloat(offset + 5), // progress
+            cursor.getInt(offset + 6), // downid
+            cursor.isNull(offset + 7) ? null : cursor.getString(offset + 7) // url
         );
         return entity;
     }
@@ -111,6 +152,11 @@ public class MyBeanDao extends AbstractDao<MyBean, Long> {
         entity.setId(cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0));
         entity.setUsername(cursor.isNull(offset + 1) ? null : cursor.getString(offset + 1));
         entity.setNickname(cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2));
+        entity.setState(cursor.getInt(offset + 3));
+        entity.setFilepath(cursor.isNull(offset + 4) ? null : cursor.getString(offset + 4));
+        entity.setProgress(cursor.getFloat(offset + 5));
+        entity.setDownid(cursor.getInt(offset + 6));
+        entity.setUrl(cursor.isNull(offset + 7) ? null : cursor.getString(offset + 7));
      }
     
     @Override

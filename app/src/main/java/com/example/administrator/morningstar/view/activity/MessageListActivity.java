@@ -81,7 +81,7 @@ public class MessageListActivity extends BaseMvpActivity<IMessageListActivity,Me
 
             if(requestCode == 100) {
                 if (AndPermission.hasPermission(mContext,android.Manifest.permission.WRITE_EXTERNAL_STORAGE, android.Manifest.permission.MOUNT_UNMOUNT_FILESYSTEMS)) {
-                    Toast.makeText(mContext,"haha",Toast.LENGTH_LONG).show();
+                    Toast.makeText(mContext,"成功回调：权限申请成功",Toast.LENGTH_LONG).show();
                 } else {
                     AndPermission.defaultSettingDialog(MessageListActivity.this, 400)
                             .setTitle("权限申请失败")
@@ -89,7 +89,7 @@ public class MessageListActivity extends BaseMvpActivity<IMessageListActivity,Me
                             .setPositiveButton("好，去设置")
                             .show();
                 }
-                Toast.makeText(mContext,"haha",Toast.LENGTH_LONG).show();
+                Toast.makeText(mContext,"成功回调：权限申请成功",Toast.LENGTH_LONG).show();
             }
         }
 
@@ -109,7 +109,7 @@ public class MessageListActivity extends BaseMvpActivity<IMessageListActivity,Me
                 }*/
 
                 if (AndPermission.hasPermission(mContext, android.Manifest.permission.WRITE_EXTERNAL_STORAGE, android.Manifest.permission.MOUNT_UNMOUNT_FILESYSTEMS)) {
-                    Toast.makeText(mContext,"hehe",Toast.LENGTH_LONG).show();
+                    Toast.makeText(mContext,"错误回调：权限申请成功",Toast.LENGTH_LONG).show();
                 } else {
                     AndPermission.defaultSettingDialog(MessageListActivity.this, 400)
                             .setTitle("权限申请失败")
@@ -143,7 +143,7 @@ public class MessageListActivity extends BaseMvpActivity<IMessageListActivity,Me
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         switch (requestCode) {
             case 400: { // 这个400就是你上面传入的数字。
-                Toast.makeText(mContext,"hehe",Toast.LENGTH_LONG).show();
+                Toast.makeText(mContext,"系统设置：权限申请成功",Toast.LENGTH_LONG).show();
                 break;
             }
         }
