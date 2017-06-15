@@ -46,14 +46,13 @@ public class DownLoadManager {
         FileDownloader impl = FileDownloader.getImpl();
         impl.setMaxNetworkThreadCount(1);
         impl.enableAvoidDropFrame();
-        int enqueue =
-                impl.create(url)
-                        .setPath(path)
-                        .setAutoRetryTimes(0)
-                        .setCallbackProgressMinInterval(2000)
-                        .setListener(new DownLoadManagerListener(myBean,context))
-                        .start();
-        return enqueue;
+        return impl
+                .create(url)
+                .setPath(path)
+                .setAutoRetryTimes(0)
+                .setCallbackProgressMinInterval(2000)
+                .setListener(new DownLoadManagerListener(myBean,context))
+                .start();
     }
 
     public void pauseDownLoad(int id) {

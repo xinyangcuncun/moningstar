@@ -68,9 +68,12 @@ public class MessageListActivity extends BaseMvpActivity<IMessageListActivity,Me
         tv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                AndPermission.with(MessageListActivity.this)
-                        .requestCode(100)
-                        .permission(android.Manifest.permission.WRITE_EXTERNAL_STORAGE, android.Manifest.permission.MOUNT_UNMOUNT_FILESYSTEMS).callback(listener).start();
+                AndPermission
+                        .with(MessageListActivity.this)
+                        .requestCode(100)   //区分是哪个权限的申请，类似handler的消息类型
+                        .permission(android.Manifest.permission.WRITE_EXTERNAL_STORAGE, android.Manifest.permission.MOUNT_UNMOUNT_FILESYSTEMS)
+                        .callback(listener)
+                        .start();
             }
         });
     }
