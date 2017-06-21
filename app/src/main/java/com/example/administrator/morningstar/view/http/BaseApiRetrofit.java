@@ -12,6 +12,7 @@ import java.util.concurrent.TimeUnit;
 
 import okhttp3.Cache;
 import okhttp3.CacheControl;
+import okhttp3.HttpUrl;
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -61,6 +62,11 @@ public class BaseApiRetrofit {
 
     //header配置
     Interceptor REWRITE_HEADER_CONTROL_INTERCEPTOR = chain -> {
+//        Request request1 = chain.request();
+//        HttpUrl url=request1.url().newBuilder()
+//                .addQueryParameter("count", "5")
+//                .addQueryParameter("start", "0")
+//                .build();
         Request request = chain.request()
                 .newBuilder()
                 .addHeader("Content-Type", "application/json")
@@ -69,9 +75,12 @@ public class BaseApiRetrofit {
 //                .addHeader("Connection", "keep-alive")
 //                .addHeader("Accept", "*/*")
 //                .addHeader("Cookie", "add cookies here")
+//                .url(url)
                 .build();
         return chain.proceed(request);
     };
+
+
 
     //cache配置
     Interceptor REWRITE_CACHE_CONTROL_INTERCEPTOR = chain -> {
