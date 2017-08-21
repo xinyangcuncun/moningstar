@@ -1,5 +1,6 @@
 package com.example.administrator.morningstar.view.activity;
 
+import android.content.pm.ActivityInfo;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -11,7 +12,6 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.administrator.morningstar.R;
-import com.example.administrator.morningstar.view.base.BaseActivity;
 import com.example.administrator.morningstar.view.presenter.BasePresenter;
 import com.example.administrator.morningstar.view.tool.ViewTools;
 
@@ -36,6 +36,7 @@ public abstract class BaseMvpActivity<V, T extends BasePresenter<V>> extends App
         super.onCreate(savedInstanceState);
         ViewTools.setActivityBackGroudCoulor(this, Color.parseColor("#ffffff"));
         super.setContentView(R.layout.activity_base);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         mContext = this;
         mView = (LinearLayout) findViewById(R.id.root_view);
         mToolBarView = (Toolbar) findViewById(R.id.tb_app_bar);

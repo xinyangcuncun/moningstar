@@ -8,4 +8,8 @@
     <string name="phone_not_available">手机不可用</string>
     <string name="vertify_code_error">手机号已存在</string>
     <string name="register_error">注册失败</string>
+    <string name="haha">ssdssssfsdfdfddhfjdhfkdhfkdhfkjdhfjkhdkfjhdkjhfkdjhfkjdhfkjdhfkjhfkjdhkjfhdkjhfkjdhfkjdhfkjdhfkjdhfkjhfkjdhfjkdfjhsdkjfhdkjhfjkdhfkjdhfkjhsdjkfhdjkfhdjkhfjkdhfjkdhfjkdhfjkdhfkjdhfkjhsdjkfhdsjkfhdjkhfjkdhfjkdhfjkdhfjkdhfjkdhfjkdhfjkdhfjkdhfjkdhfjkdhfjkdhfjkdhfjkdhfjkdhfjkdhfjkdhfjkdhfkjdhfjkdhjkfhdjkfhdjkhfjkdhfjkdhfjkdhfjkdhfjkdhfjkdhfjkdhfjkdhfdjkhfjkdhfkjdhfkdjhfkdhfkjdhdkjhfdfdfdfdfdfdfdfdfd</string>
+    <string name="fab_behavia">com.example.administrator.morningstar.view.adapter.FabBehavior</string>
+    <string name="elema_iv_behavior">com.example.administrator.morningstar.view.adapter.CenterBehavior</string>
+    <string name="head_eleme">com.example.administrator.morningstar.view.adapter.HeadBehavior</string>
 </resources>

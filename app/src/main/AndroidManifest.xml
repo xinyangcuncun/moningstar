@@ -95,6 +95,13 @@
         <activity android:name=".view.activity.MessageListActivity"></activity>
         <activity android:name=".view.activity.DownLoadActivity"></activity>
         <activity android:name=".view.activity.DownLoadListActivity"></activity>
+        <activity android:name=".view.activity.GSYPlayerActivity"></activity>
+        <activity android:name=".view.activity.SigleVideoPlayer"></activity>
+        <activity android:name=".view.activity.MusicActivity"></activity>
+        <activity android:name=".view.activity.BehaviorActivity1"></activity>
+        <activity android:name=".view.activity.BehaviorActivity2"></activity>
+        <activity android:name=".view.activity.BehaviorActivity3"></activity>
+        <activity android:name=".view.activity.BehaviorActivity4"></activity>
         <service
             android:name=".view.activity.DemoPushService"
             android:exported="true"
@@ -105,27 +112,6 @@
         <receiver android:name=".view.activity.PlayerService">
             <intent-filter>
                 <action android:name=".view.activity.PlayerService"/>
-            </intent-filter>
-        </receiver>
-
-
-        <meta-data android:name="EASEMOB_APPKEY"  android:value="1177170509115291#renchangcun" />
-        <!-- 声明SDK所需的service SDK核心功能-->
-        <service android:name="com.hyphenate.chat.EMChatService" android:exported="true"/>
-        <service android:name="com.hyphenate.chat.EMJobService"
-            android:permission="android.permission.BIND_JOB_SERVICE"
-            android:exported="true"
-            />
-        <!-- 声明SDK所需的receiver -->
-        <receiver android:name="com.hyphenate.chat.EMMonitorReceiver">
-            <intent-filter>
-                <action android:name="android.intent.action.PACKAGE_REMOVED"/>
-                <data android:scheme="package"/>
-            </intent-filter>
-            <!-- 可选filter -->
-            <intent-filter>
-                <action android:name="android.intent.action.BOOT_COMPLETED"/>
-                <action android:name="android.intent.action.USER_PRESENT" />
             </intent-filter>
         </receiver>
 
