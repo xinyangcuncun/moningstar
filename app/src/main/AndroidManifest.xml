@@ -102,6 +102,10 @@
         <activity android:name=".view.activity.BehaviorActivity2"></activity>
         <activity android:name=".view.activity.BehaviorActivity3"></activity>
         <activity android:name=".view.activity.BehaviorActivity4"></activity>
+        <activity android:name=".view.activity.SelfViewActivity"></activity>
+        <activity android:name=".view.activity.SelfView1"></activity>
+        <activity android:name=".view.activity.SelfView2"></activity>
+        <activity android:name=".view.activity.SVG1"></activity>
         <service
             android:name=".view.activity.DemoPushService"
             android:exported="true"

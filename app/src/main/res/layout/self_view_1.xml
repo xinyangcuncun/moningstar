@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <android.support.design.widget.CollapsingToolbarLayout
+            app:layout_scrollFlags="scroll|snap|exitUntilCollapsed"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:scaleType="centerCrop"
+                android:src="@mipmap/pg_one"
+                app:layout_collapseMode="parallax"
+                android:layout_width="match_parent"
+                android:layout_height="300dp" />
+
+            <FrameLayout
+                app:layout_collapseParallaxMultiplier="0.3"
+                app:layout_collapseMode="parallax"
+                android:id="@+id/fl_view_1"
+                android:layout_gravity="bottom"
+                android:layout_width="match_parent"
+                android:layout_height="100dp">
+
+            </FrameLayout>
+
+        </android.support.design.widget.CollapsingToolbarLayout>
+
+    </android.support.design.widget.AppBarLayout>
+
+    <android.support.v4.widget.NestedScrollView
+        app:behavior_overlapTop="30dp"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <include layout="@layout/include_eleme" />
+    </android.support.v4.widget.NestedScrollView>
+
+    <android.support.v7.widget.Toolbar
+        android:background="#FF6749CA"
+        app:layout_anchor="@id/fl_view_1"
+        android:id="@+id/tool_bar_view_1"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize">
+
+    </android.support.v7.widget.Toolbar>
+
+
+    <TextView
+        android:layout_marginRight="40dp"
+        android:layout_gravity="center|right"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:textSize="30sp"
+        android:text="PgOne"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_behavior="@string/view_behavior_1"/>
+
+</android.support.design.widget.CoordinatorLayout>

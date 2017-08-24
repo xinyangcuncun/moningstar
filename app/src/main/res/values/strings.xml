@@ -12,4 +12,8 @@
     <string name="fab_behavia">com.example.administrator.morningstar.view.adapter.FabBehavior</string>
     <string name="elema_iv_behavior">com.example.administrator.morningstar.view.adapter.CenterBehavior</string>
     <string name="head_eleme">com.example.administrator.morningstar.view.adapter.HeadBehavior</string>
+    <string name="elema_behavior">com.example.administrator.morningstar.view.adapter.AvatarImageBehavior</string>
+    <string name="view_behavior_1">com.example.administrator.morningstar.view.adapter.View1Behavior</string>
+    <string name="behavior_2">com.example.administrator.morningstar.view.adapter.View2Behavior</string>
+    <string name="behavior_2_textview">com.example.administrator.morningstar.view.adapter.View2BehaviorTextView</string>
 </resources>

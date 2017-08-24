@@ -346,6 +346,9 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
             case R.id.nav_share:
                 GSYPlayerActivity.startMe(mContext);
                 break;
+            case R.id.nav_view:
+                SelfViewActivity.startMe(mContext);
+                break;
         }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);

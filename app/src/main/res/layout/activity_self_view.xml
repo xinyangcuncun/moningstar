@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_marginTop="10dp"
+        android:background="@color/cardViewBg"
+        android:gravity="center"
+        android:id="@+id/tv_view_1"
+        android:textSize="20sp"
+        android:text="效果1"
+        android:layout_width="match_parent"
+        android:layout_height="40dp" />
+
+    <TextView
+        android:layout_marginTop="10dp"
+        android:background="@color/cardViewBg"
+        android:gravity="center"
+        android:id="@+id/tv_view_2"
+        android:textSize="20sp"
+        android:text="效果2"
+        android:layout_width="match_parent"
+        android:layout_height="40dp" />
+
+    <TextView
+        android:layout_marginTop="10dp"
+        android:background="@color/cardViewBg"
+        android:gravity="center"
+        android:id="@+id/tv_svg_1"
+        android:textSize="20sp"
+        android:text="SVG1"
+        android:layout_width="match_parent"
+        android:layout_height="40dp" />
+
+</LinearLayout>
